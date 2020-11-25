@@ -1,4 +1,4 @@
-# Iniciación a pyTorch
+# Iniciación a las redes neuronales con pyTorch
 
 Este libro nace de unas prácticas diseñadas para la asignatura Tratamiento Digital de Voz e Imagen, del grado en Ingeniería de Sonido e Imagen por la Universidad de Málaga. 
 
