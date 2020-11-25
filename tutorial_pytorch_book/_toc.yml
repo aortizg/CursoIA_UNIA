@@ -2,11 +2,11 @@
 - file: landing-page
 
   numbered: true
-- file: 00 Práctica Deep Learning - Introducción
+- file: 00_intro
   title: Introducción
-
-- file: 01 Práctica Deep Learning - Perceptrón Multicapa
+- file: 01_pytorch
+  title: PyTorch
+- file: 02_mlp
   title: Perceptrón Multicapa
-  
-- file: 02 Práctica Deep Learning - Redes Convolucionales
+- file: 03_cnn
   title: Redes Convolucionales
