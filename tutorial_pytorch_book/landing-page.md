@@ -2,8 +2,8 @@
 
 Este libro nace de unas prácticas diseñadas para la asignatura Tratamiento Digital de Voz e Imagen, del grado en Ingeniería de Sonido e Imagen por la Universidad de Málaga. 
 
-## Organización de la práctica: 
-Esta práctica consta de tres partes, cada una de ellas es un *notebook* de `jupyter`, o sea, un documento como el que estás visualizando en este momento. Las partes son las siguientes: 
+## Organización de este tutorial: 
+Este tutorial consta de tres partes, cada una de ellas es un *notebook* de `jupyter`, o sea, un documento como el que estás visualizando en este momento. Las partes son las siguientes: 
 * **Parte 0: Introducción al Deep Learning**. Es este *notebook*, preparatorio de la práctica mediante **realización guiada** en el que se tratarán:
     - Unas pinceladas a las matemáticas y la historia de las redes neuronales
     - Información sobre qué es y cómo instalar el software necesario para esta práctica: la distribución de python 3 [Anaconda](https://www.anaconda.com/distribution/), la librería de computación tensorial [PyTorch](https://pytorch.org/get-started/locally/) y la plataforma de notebooks `jupyter`. 
