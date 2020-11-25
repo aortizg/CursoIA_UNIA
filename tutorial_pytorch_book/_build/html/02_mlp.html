@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. El perceptrón multicapa &#8212; Iniciación a las redes neuronales con pyTorch</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Redes Neuronales Convolucionales" href="03_cnn.html" />
+    <link rel="prev" title="2. Pytorch" href="01_pytorch.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Iniciación a las redes neuronales con pyTorch</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   Iniciación a las redes neuronales con pyTorch
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_intro.html">
+   1. Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_pytorch.html">
+   2. PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. El Perceptrón Multicapa
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_cnn.html">
+   4. Redes Convolucionales
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/02_mlp.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pakitochus/tutorial_pytorch"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pakitochus/tutorial_pytorch/master?urlpath=tree/02_mlp.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.1. El perceptrón multicapa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#y-como-escribo-yo-esto-en-python">
+   3.2. ¿Y como escribo yo esto en python?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion">
+     3.2.1. Preparación
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datos-datos-datos">
+     3.2.2. Datos, datos, datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creacion-del-modelo">
+   3.3. Creación del modelo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrenar-el-modelo">
+     3.3.1. Entrenar el modelo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion-del-modelo">
+     3.3.2. Evaluación del modelo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="el-perceptron-multicapa">
+<h1><span class="section-number">3. </span>El perceptrón multicapa<a class="headerlink" href="#el-perceptron-multicapa" title="Permalink to this headline">¶</a></h1>
+<p>Este notebook, donde se introduce el perceptrón multicapa (Multi-Layer Perceptron o MLP), la red neuronal más básica que podemos construir. Vamos a tratar detalladamente cómo crear, entrenar y evaluar una red neuronal usando <code class="docutils literal notranslate"><span class="pre">pytorch</span></code>.</p>
+<p>Esta parte se compone de:</p>
+<ol class="simple">
+<li><p>Introducción al perceptrón</p>
+<ul class="simple">
+<li><p>El perceptrón multicapa</p></li>
+</ul>
+</li>
+<li><p>Realización guiada</p>
+<ul class="simple">
+<li><p>Preparación y carga de librerías</p></li>
+<li><p>Descarga y preparación de los datos</p></li>
+<li><p>Creación del modelo</p></li>
+<li><p>Entrenar el modelo</p></li>
+<li><p>Evaluar el modelo</p></li>
+</ul>
+</li>
+</ol>
+<p>En resumen, en este pequeño tutorial aprenderemos a usar PyTorch para crear, entrenar y predecir con nuestra primera red neuronal. Una red neuronal consta fundamentalmente de:</p>
+<ul class="simple">
+<li><p>Una <strong>arquitectura</strong>, que especifica cómo se organizan las neuronas y qué funciones aplican a las diferentes entradas para llegar a la salida.</p></li>
+<li><p>Una <strong>función de <em>loss</em></strong> o pérdida, que es la que cuantifica cómo de malas son las predicciones de nuestra red neuronal.</p></li>
+<li><p>Un <strong>algoritmo de entrenamiento</strong>. Que especifica como, a partir del <em>loss</em> se van a actualizar los pesos de la red neuronal para aumentar su precisión.</p></li>
+</ul>
+<p>En esta práctica vamos a comenzar con una red muy sencilla: el <strong>perceptrón multicapa</strong>.</p>
+<div class="section" id="id1">
+<h2><span class="section-number">3.1. </span>El perceptrón multicapa<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>El <strong>perceptrón multicapa</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Multilayer_perceptron">Multi-layer perceptron</a>) es quizá la red neuronal más básica, aunque a pesar de su sencillez es bastante efectiva. Se considera un aproximador universal (ver charla en <code class="docutils literal notranslate"><span class="pre">00</span> <span class="pre">Práctica</span> <span class="pre">Deep</span> <span class="pre">Learning</span> <span class="pre">-</span> <span class="pre">Introducción</span></code> donde se explican sus matemáticas), y tiene una estructura básica que consta de:</p>
+<ul class="simple">
+<li><p>Capa de entrada (input layer)</p></li>
+<li><p>Capa(s) oculta(s) (hidden layer)</p></li>
+<li><p>Capa de salida (output layer)</p></li>
+</ul>
+<p>Cada una de estas capas está compuesta de <span class="math notranslate nohighlight">\(i\)</span> neuronas, cada una conectada con todas las neuronas de la capa siguiente. Recordemos la ecuación de una neurona básica:
+$<span class="math notranslate nohighlight">\( y_i^n = f(\mathbf{w_i^n}*\mathbf{y^{n-1}}+b_i^n)\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>n<span class="math notranslate nohighlight">\( es el número de capa (la capa de entrada es la 0), \)</span>i<span class="math notranslate nohighlight">\( el número de neurona dentro de cada capa y \)</span>f()<span class="math notranslate nohighlight">\( es una **función de activación**. De este modo, esa ecuación describe la multiplicación matricial de un vector de pesos \)</span>\mathbf{w_i^n}<span class="math notranslate nohighlight">\( de la neurona \)</span>i<span class="math notranslate nohighlight">\( de la capa \)</span>n<span class="math notranslate nohighlight">\( por las activaciones de la capa anterior \)</span>\mathbf{y^{n-1}}<span class="math notranslate nohighlight">\(, lo que da un valor más un sesgo o *bias* \)</span>b_i^n$, todo pasando por la función de activación.</p>
+<p>Este tipo de redes en las que las conexiones van siempre en la misma dirección y no hay conexiones dentro de una capa o que se salten capas se conocen como <em>feedforward</em> o <em>fully connected</em>. A continuación se detalla la estructura de un perceptrón de una sola capa oculta:</p>
+<p><img alt="A-hypothetical-example-of-Multilayer-Perceptron-Network.png" src="attachment:A-hypothetical-example-of-Multilayer-Perceptron-Network.png" /></p>
+</div>
+<div class="section" id="y-como-escribo-yo-esto-en-python">
+<h2><span class="section-number">3.2. </span>¿Y como escribo yo esto en python?<a class="headerlink" href="#y-como-escribo-yo-esto-en-python" title="Permalink to this headline">¶</a></h2>
+<p>En el notebook anterior ya hemos hecho una introducción al trabajo con tensores de pytorch, aplicación de funciones y al cálculo automático de gradientes. En este documento vamos a construir nuestra primera red neuronal, pero seguiremos utilizando los mismos conceptos básicos que manejábamos en ese tutorial.</p>
+<div class="section" id="preparacion">
+<h3><span class="section-number">3.2.1. </span>Preparación<a class="headerlink" href="#preparacion" title="Permalink to this headline">¶</a></h3>
+<p>Vamos a ir paso a paso. Lo primero que tenemos que hacer es importar pytorch y algunos módulos de la librería:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.nn</span></code>: La librería de redes neuronales que utilizaremos para crear nuestro modelo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.autograd</span></code>: En concreto el módulo Variable de esta librería que se encarga de manejar las operaciones de los tensores y sus gradientes, que son más complejos que los que vimos en la parte anterior.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torchvision.datasets</span></code>: El módulo que ayudará a cargar el conjunto de datos que vamos a utilizar y explicaremos más adelante.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torchvision.transforms</span></code>: Este módulo contiene una serie de funciones que nos ayudarán modificando el dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.optim</span></code>: De aquí usaremos el optimizador para entrenar la red neuronal y modificar sus pesos.</p></li>
+</ul>
+<p>Para ello ejecutamos el siguiente código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">dset</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="datos-datos-datos">
+<h3><span class="section-number">3.2.2. </span>Datos, datos, datos<a class="headerlink" href="#datos-datos-datos" title="Permalink to this headline">¶</a></h3>
+<p>Los datos son la parte más importante del <em>deep learning</em>, rivalizando con la arquitectura de red utilizada y cualquier otro parámetro. Para esta práctica-tutorial, vamos a utilizar el conjunto conocido como MNIST. Se trata de un conjunto de imágenes de dígitos escritos a mano, contiene un total de 60000 imágenes para entrenamiento y 10000 para <em>test</em>, o sea, para probar la efectividad de nuestro modelo. Todos los dígitos están normalizados en tamaño y centrados en la imagen de tamaño 28x28 en escala de grises. El objetivo de esta base de datos es clasificar cada imagen diciendo a que número entre el 0 y el 9 pertenece.</p>
+<p>Para cargar de forma rápida el dataset vamos a utilizar el modulo <code class="docutils literal notranslate"><span class="pre">datasets</span></code> de <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>, además debemos definir que transformaciones vamos a aplicarle a todas las muestras, como convertir el tipo de datos de la imagen a un <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, el formato con el que esta librería puede realizar cálculos de forma eficiente. <code class="docutils literal notranslate"><span class="pre">torchvision.transforms</span></code> contiene una gran cantidad de transformaciones para aplicar a los datasets que quizá usemos más adelante, por ejemplo para normalizar el dataset, aunque dado que este dataset está normalizado a valores entre 0 y 1, no nos hará falta.</p>
+<p>Definimos también en <code class="docutils literal notranslate"><span class="pre">root</span></code> el directorio donde guardamos los datos. Puede ser el que queráis, según el sistema operativo que estéis utilizando. Si juntamos la transformación (<code class="docutils literal notranslate"><span class="pre">transforms.ToTensor()</span></code>) y la guardamos en <code class="docutils literal notranslate"><span class="pre">trans</span></code>, podemos adjuntarla al cargador de los datos en <code class="docutils literal notranslate"><span class="pre">dset.MNIST</span></code> de la forma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()])</span> <span class="c1">#Transformador para el dataset</span>
+<span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;./data/&#39;</span>
+<span class="n">train_set</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El entrenamiento de una red neuronal se realiza mediante <em>batches</em>, o lo que es lo mismo, por subconjuntos de los datos de entrenamiento (de 2 en 2, de 5 en 5 o de 256 en 256…), lo que acelera el entrenamiento y hace que la red neuronal aprenda de forma más efeciva. Lo veremos más adelante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Después definimos un <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code> para el dataset que hemos descargado. Un <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code>, que no es más que un objeto que, cuando lo llamemos con un comando determinado, nos dará las muestras de entrenamiento o test en grupos del tamaño <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. También contiene funciones que pueden ser útiles, como reordenar aleatoriamente el dataset en cada iteración (<code class="docutils literal notranslate"><span class="pre">shuffle</span></code>). El código será:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+                 <span class="n">dataset</span><span class="o">=</span><span class="n">train_set</span><span class="p">,</span>
+                 <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                 <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+                <span class="n">dataset</span><span class="o">=</span><span class="n">test_set</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos saber la cantidad de conjuntos (batches) de tamaño 128 tenemos simplemente utilizando la función <code class="docutils literal notranslate"><span class="pre">len</span></code> de Python. En el caso de que el dataset no sea un múltiplo del tamaño de batch, el último batch será de un tamaño reducido.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Trainning batch number: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Testing batch number: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y podemos mostrarlo utilizando la librería <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, y la función <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code>, que muestra una imagen, así como la función <code class="docutils literal notranslate"><span class="pre">make_grid</span></code> de <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">make_grid</span>
+
+<span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>     <span class="c1"># desnormalizar</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> 
+    <span class="c1"># cambiamos las dimensiones para que el número de canales </span>
+    <span class="c1"># se muestre al final (por defecto en matplotlib)</span>
+
+<span class="c1"># convertimos train_loader en un iterador</span>
+<span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span> 
+<span class="c1"># y recuperamos el i-esimo elemento, un par de valores (imagenes, etiquetas)</span>
+<span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataiter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+
+<span class="c1"># Usamos la función imshow que hemos definido para mostrar imágenes</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">make_grid</span><span class="p">(</span><span class="n">images</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creacion-del-modelo">
+<h2><span class="section-number">3.3. </span>Creación del modelo<a class="headerlink" href="#creacion-del-modelo" title="Permalink to this headline">¶</a></h2>
+<p>Una vez tenemos el dataset debemos decidir que topología de red neuronal vamos a utilizar. Nosotros vamos a utilizar una red muy simple con una sola capa oculta con 256 neuronas.</p>
+<p>En PyTorch, las redes se definen como una clase que hereda de <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>. Si no sabéis que es una clase o un objeto, éste es un buen video de <a class="reference external" href="https://www.youtube.com/watch?v=tTPeP5dVuA4">introducción a la programación orientada a objetos</a> en youtube.</p>
+<p>Las clases en python se definen con la palabra clave <code class="docutils literal notranslate"><span class="pre">class</span></code>, y para una red del tipo <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> debemos definir dos métodos fundamentales: <code class="docutils literal notranslate"><span class="pre">__init__</span></code> y <code class="docutils literal notranslate"><span class="pre">forward</span></code>. En <code class="docutils literal notranslate"><span class="pre">__init__</span></code> se definen que capas va a tener la red:</p>
+<ul class="simple">
+<li><p>La primera capa será nuestra capa oculta que recibe un tamaño de entrada de 28x28 y una salida de 256 neuronas.</p></li>
+<li><p>La segunda capa será la capa de salida, y recibirá las 256 salidas de la capa oculta y tendrá 10 neuronas de salida.
+Ambas capas serán de tipo <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code>, que es el tipo básico de operación que hemos descrito con la ecuación anterior.</p></li>
+</ul>
+<p>A continuación, se define la función <code class="docutils literal notranslate"><span class="pre">forward()</span></code>, que implementa las operaciones a realizar desde la entrada de la red a la salida. En nuestro caso, los pasos serán:</p>
+<ul class="simple">
+<li><p>Linealizar las imágenes, es decir, transformarlas en un vector de 784 elementos, ya que un perceptrón requiere un vector de entrada. Esto lo hacemos con la función <code class="docutils literal notranslate"><span class="pre">view()</span></code>.</p></li>
+<li><p>Después aplicamos la capa 1 (<code class="docutils literal notranslate"><span class="pre">self.fc1</span></code>) y a su salida, la función de activación <code class="docutils literal notranslate"><span class="pre">F.relu()</span></code>.</p></li>
+<li><p>Finalmente aplicamos la capa 2 (<code class="docutils literal notranslate"><span class="pre">self.fc2</span></code>) y a su salida, la función de activación <code class="docutils literal notranslate"><span class="pre">F.softmax()</span></code>.</p></li>
+</ul>
+<p>ReLU es la función <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">rectified linear unit</a> y la función <a class="reference external" href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>, que es una función que toma como entrada un vector de K números reales, y lo normaliza en una distribución de probabilidad consistente en K probabilidades proporcionales a los exponenciales de los números de entrada. Esta última nos dará las probabilidades de pertenencia de cada entrada a cada una de las 10 clases, y cogeremos como “etiqueta” aquella que tenga máxima probabilidad.</p>
+<p>El código para esta clase es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="c1">#capa oculta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="c1">#capa de salida</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="c1">#transforma las imágenes de tamaño (n, 28, 28) a (n, 784)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="c1">#Función de activación relu en la salida de la capa oculta</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#Función de activación softmax en la salida de la capa oculta</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A continuación definimos el criterio de <em>loss</em> y el optimizador. Como criterio de <em>loss</em> vamos a utilizar la entropía cruzada, una medida basada en la entropía que viene de la teoría de la información, y que calcula la diferencia entre dos distribuciones de probabilidad. Si recordáis, al usar “softmax” en la salida de la red nos da la probabilidad de cada neurona según la entrada. Si la comparamos a la distribución real (las etiquetas), nos dará una buena estimación del error.</p>
+<p>En cuanto al optimizador, utilizaremos el <a class="reference external" href="https://medium.com/metadatos/todo-lo-que-necesitas-saber-sobre-el-descenso-del-gradiente-aplicado-a-redes-neuronales-19bdbb706a78">descenso de gradiente estocástico</a>, una técnica de aprendizaje que se basa en el gradiente de la salida con respecto a la referencia, y actualiza los pesos de la red neuronal ajustándolos a dicho gradiente. Para ello es necesario crear el objeto <code class="docutils literal notranslate"><span class="pre">model</span></code>, nuestro modelo, a partir de la clase <code class="docutils literal notranslate"><span class="pre">MLP()</span></code> que hemos definido, y posteriormente pasar sus parámetros al optimizador:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">()</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span> <span class="c1"># definimos la pérdida</span>
+<span class="c1"># y utilizamos descenso de gradiente estocástico con un learning-rate </span>
+<span class="c1"># (factor que cuantifica cuánto vamos a actualizar los pesos con respecto</span>
+<span class="c1"># a su valor actual) de 0.01 y un momento de 0.9, que actualiza el learning</span>
+<span class="c1"># rate en función de sus valores anteriores</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="entrenar-el-modelo">
+<h3><span class="section-number">3.3.1. </span>Entrenar el modelo<a class="headerlink" href="#entrenar-el-modelo" title="Permalink to this headline">¶</a></h3>
+<p>Ya tenemos nuestro modelo, con su arquitectura, loss y optimizador creados. Podemos empezar a entrenar el modelo. Esto se realiza mediante diversas iteraciones de entrenamiento, conocidas como <strong>epoch</strong>. La idea es básicamente hacer algo como (en pseudocódigo):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+        <span class="n">salida</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="c1"># conocido como &quot;forward pass&quot;</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterio</span><span class="p">(</span><span class="n">salida</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">propagar</span> <span class="n">gradiente</span> <span class="n">de</span> <span class="n">loss</span> <span class="n">a</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">neuronas</span><span class="p">,</span> <span class="n">conocido</span> <span class="n">como</span> <span class="s2">&quot;backward pass&quot;</span>
+        <span class="n">optimizar</span> <span class="n">usando</span> <span class="n">dicho</span> <span class="n">gradiente</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span> <span class="c1"># Esta será la parte de entrenamiento</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># el loss en cada epoch de entrenamiento</span>
+    <span class="n">running_acc</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># el accuracy de cada epoch</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># ponemos a cero todos los gradientes en todas las neuronas</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="c1"># forward pass </span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="c1"># estimamos el loss</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># backward pass</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># optimización</span>
+
+        <span class="c1"># Mostramos las estadísticas</span>
+        <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># acumulamos el loss de este batch</span>
+        <span class="c1"># extraemos las etiquetas que predice (nº neurona con máxima probabilidad)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+        <span class="n">running_acc</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predicted</span><span class="o">==</span><span class="n">labels</span><span class="p">)</span> <span class="c1"># y acumulamos el número de correctos</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&gt;&gt;&gt; Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1"> &gt;&gt;&gt;&gt; Loss: </span><span class="si">{</span><span class="n">running_loss</span><span class="o">/</span><span class="n">total</span><span class="si">}</span><span class="s1">, Acc: </span><span class="si">{</span><span class="n">running_acc</span><span class="o">/</span><span class="n">total</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y al parecer, obtenemos un accuracy alto, de más del 90%. Eso quiere decir que acumula más del 90% de predicciones correctas a partir de los datos. Pero por supuesto, esto es en el conjunto del training.</p>
+<p>Sin embargo, para poder ver el poder predictivo de nuestro modelo entrenado, es importante probar su precisión en datos que dicho modelo no ha visto nunca. Y para eso es para lo que sirve el conjunto de test.</p>
+</div>
+<div class="section" id="evaluacion-del-modelo">
+<h3><span class="section-number">3.3.2. </span>Evaluación del modelo<a class="headerlink" href="#evaluacion-del-modelo" title="Permalink to this headline">¶</a></h3>
+<p>En la evaluación, que se suele conocer como “test”, en lugar del forward y el backward pass, solo vamos a utilizar el forward. Se le pasa el conjunto de test, se obtienen las predicciones y se comparan con las etiquetas reales para estimar la precisión en el test. Las etiquetas que obtenemos con <code class="docutils literal notranslate"><span class="pre">outputs</span></code> son un formato un poco extraño, conocido como <em>one-hot encoding</em>, y sería algo similar a: <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></code> para el número 3, o <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1]</span></code> para el número 9.</p>
+<p>En realidad, al ser la salida de la última capa que al pasar por <code class="docutils literal notranslate"><span class="pre">softmax</span></code> se convierten probabilidades, así que serán cosas como: <code class="docutils literal notranslate"><span class="pre">[0.01,</span> <span class="pre">0.00,</span> <span class="pre">0.00,</span> <span class="pre">0.04,</span> <span class="pre">0.01,</span> <span class="pre">0.10,</span> <span class="pre">0.04,</span> <span class="pre">0.07,</span> <span class="pre">0.72,</span> <span class="pre">0.00]</span></code>, donde tenemos dos posiciones (la 5 y la 8) con probabilidades altas (0.10, y 0.72). Para obtener el valor numérico donde se encuentra la máxima probabilidad (el número que nuestra red neuronal piensa que se corresponde con la entrada), usamos la orden <code class="docutils literal notranslate"><span class="pre">torch.max(outputs,1)</span></code>, que devolverá una lista con la localización del máximo en el eje 1 (el de las columnas).</p>
+<p>Es importante deshabilitar la propagación del gradiente durante el foward pass, para que no modifiquemos los pesos de la red durante el test, y no contamine el entrenamiento. Así pues, con estas restricciones, el test se queda:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="c1"># hay que deshabilitar la propagación de gradiente</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="c1"># forward pass</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># obtención de etiquetas numéricas</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># aumentamos el número de etiquetas comprobadas para calcular la precisión después</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># sumamos el número de etiquetas correctas para calcular la precisión</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precisión del modelo en las imágenes de test: </span><span class="si">{</span><span class="n">correct</span> <span class="o">/</span> <span class="n">total</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vemos que en test alcanzamos un valor de 93% de precisión, muy similar a la precisión de training, lo cual significa que nuestro modelo será bastante bueno para la detección de dígitos escritos a mano. Para comprender mejor que ha pasado, vamos a visualizar algunos casos correctos y otros que han fallado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">muestra_predicciones</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># numero de elementos de cada categoría a mostrar (nx2 total)</span>
+    <span class="c1">#init:</span>
+    <span class="n">ncorrect</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">nwrong</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1"># tamaño de los bloques. </span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="p">,)</span><span class="o">+</span><span class="n">loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="c1"># este es el tamaño de la salida: </span>
+    <span class="n">n_salida</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children</span><span class="p">())[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">out_features</span>
+    
+    <span class="c1"># para almacenar los datos</span>
+    <span class="n">im_correct_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">im_wrong_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">output_correct_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n_salida</span><span class="p">))</span>
+    <span class="n">output_wrong_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n_salida</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="c1"># hay que deshabilitar la propagación de gradiente</span>
+        <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="c1"># forward pass</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># obtención de etiquetas numéricas</span>
+            <span class="n">aciertos</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">==</span><span class="n">labels</span>
+
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">aciertos</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">ncorrect</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aciertos</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># obtiene los indices de los elementos correctamente clasificados</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ix</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="n">ncorrect</span><span class="p">]):</span>
+                    <span class="n">im_correct_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">ncorrect</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                    <span class="n">output_correct_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">ncorrect</span><span class="p">]</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                <span class="n">ncorrect</span> <span class="o">=</span> <span class="n">ncorrect</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">aciertos</span><span class="o">==</span><span class="kc">False</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">nwrong</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aciertos</span><span class="o">==</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># obtiene los indices de los elementos incorrectamente clasificados</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ix</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="n">nwrong</span><span class="p">]):</span>
+                    <span class="n">im_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">nwrong</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                    <span class="n">output_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">nwrong</span><span class="p">]</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                <span class="n">nwrong</span> <span class="o">=</span> <span class="n">nwrong</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">ncorrect</span><span class="o">&gt;=</span><span class="n">n</span> <span class="ow">and</span> <span class="n">nwrong</span><span class="o">&gt;=</span><span class="n">n</span><span class="p">:</span>
+                <span class="k">break</span> <span class="c1"># si ya tenemos n correctos y n incorrectos, nos salimos</span>
+
+
+    <span class="c1"># Y ahora mostramos todos estos casos: </span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># esto crea un subplot de 4x2 </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_correct_display</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">output_correct_display</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Imagenes&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Probabilidades&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">output_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="c1"># y usamos la función: </span>
+<span class="n">muestra_predicciones</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esta visualización es muy interesante, porque nos permite ver donde están los fallos. La pregunta es… ¿podríamos mejorar esta precisión con otra arquitectura optimizada para imágenes? Lo veremos en la siguiente parte de la práctica, el notebook <code class="docutils literal notranslate"><span class="pre">02</span> <span class="pre">Práctica</span> <span class="pre">Deep</span> <span class="pre">Learning</span> <span class="pre">-</span> <span class="pre">Redes</span> <span class="pre">Convolucionales.ipynb</span></code>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_pytorch.html" title="previous page"><span class="section-number">2. </span>Pytorch</a>
+    <a class='right-next' id="next-link" href="03_cnn.html" title="next page"><span class="section-number">4. </span>Redes Neuronales Convolucionales</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

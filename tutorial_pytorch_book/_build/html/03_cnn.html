@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Redes Neuronales Convolucionales &#8212; Iniciación a las redes neuronales con pyTorch</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="3. El perceptrón multicapa" href="02_mlp.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Iniciación a las redes neuronales con pyTorch</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   Iniciación a las redes neuronales con pyTorch
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_intro.html">
+   1. Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_pytorch.html">
+   2. PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_mlp.html">
+   3. El Perceptrón Multicapa
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Redes Convolucionales
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/03_cnn.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pakitochus/tutorial_pytorch"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pakitochus/tutorial_pytorch/master?urlpath=tree/03_cnn.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   4.1. Redes Neuronales Convolucionales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alexnet">
+   4.2. Alexnet
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capas-convolucionales">
+     4.2.1. Capas Convolucionales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#max-pooling">
+     4.2.2. Max Pooling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#realizacion-practica">
+   4.3. Realización práctica
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion-de-librerias-y-datos">
+     4.3.1. Preparación de librerías y datos:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diseno-de-la-red-neuronal">
+   4.4. Diseño de la red neuronal
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#otras-alternativas">
+     4.4.1. Otras alternativas:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="redes-neuronales-convolucionales">
+<h1><span class="section-number">4. </span>Redes Neuronales Convolucionales<a class="headerlink" href="#redes-neuronales-convolucionales" title="Permalink to this headline">¶</a></h1>
+<p>En esta sección veremos las redes neuronales convolucionales, que son la herramienta más potente que existe a día de hoy para el procesado de imagen. Se utilizan en coches autónomos, en la búsqueda de imágenes de google, diagnóstico de enfermedades, interpretación del lenguaje, y muchas más aplicaciones.</p>
+<p>La metodología de esta parte 2 será mediante <strong>realización autoguiada</strong>, y habrá que resolver la segunda parte para <strong><u>entregarla a través de la tarea</u></strong> habilitada en el campus virtual. El objetivo principal es <strong>implementar LeNet y entrenarla para los datos de MNIST</strong>.</p>
+<p>Esta parte se compone de:</p>
+<ul class="simple">
+<li><p>Una introducción a las redes neuronales convolucionales</p>
+<ul>
+<li><p>Alexnet</p></li>
+<li><p>Capas convolucionales</p></li>
+<li><p>Max pooling</p></li>
+</ul>
+</li>
+<li><p>Realización práctica</p>
+<ul>
+<li><p>Preparación de datos y librerías</p></li>
+<li><p>Diseño de la red neuronal LeNet</p></li>
+<li><p>Entrenamiento y test</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id1">
+<h2><span class="section-number">4.1. </span>Redes Neuronales Convolucionales<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Tras el desarrollo del perceptrón en los años 80, las redes neuronales fueron algo marginal durante los años 90 y 2000s, debido en gran parte al desarrollo de nuevos modelos estadísticos para el reconocimiento de imágenes. Éstos eran igualmente potentes, pero se podían ejecutar en los PCs de la época, tardando relativamente poco en su entrenamiento.</p>
+<p>En 2012, Alex Krizhevsky y Geoffrey Hinton ganaron el <strong>Imagenet Challenge</strong>, una competición online de clasificación de imágenes de más de mil categorías. Y lo hicieron con un error que era muy inferior a los demás competidores. <strong>Alexnet</strong>, la propuesta de los investigadores, era la única arquitectura que utilizaba redes neuronales en dicha competición, y utilizaba unos tipos de neuronas sobre los que apenas se había teorizado: las capas convolucionales. En el challenge de 2013 la mitad de los competidores usaban redes neuronales. Dos años después, apenas hubo algún competidor que usara otra estrategia.</p>
+<p>Esto fue posible a lo que Nvidia denominó el <strong>Deep Learning Big Bang</strong>, una forma de llamar a la confluencia de tres características impensables décadas antes: una mayor <strong>capacidad de cómputo</strong> con la llegada de las GPU o tarjetas gráficas, que permitían ejecutar el código con un mayor grado de paralelismo junto una <strong>disponibilidad de datos</strong> sin precedentes gracias a internet y el <strong>Big Data</strong>. Esto permitía que las redes neuronales, que habían estado latentes durante décadas, se pudieran aplicar con resultados espectaculares. Hoy día, prácticamente todas las aplicaciones de inteligencia artificial son redes neuronales: desde coches autónomos hasta el traductor de Google; desde el sistema de recomendación de Spotify hasta la detección facial de Instagram. Y todo es gracias a Alexnet.</p>
+</div>
+<div class="section" id="alexnet">
+<h2><span class="section-number">4.2. </span>Alexnet<a class="headerlink" href="#alexnet" title="Permalink to this headline">¶</a></h2>
+<p><strong>Alexnet</strong> no fue una propuesta especialmente novedosa. Utilizaba modelos de neuronas y capas que ya se habían teorizado en etapas anteriores. Pero las combinó de forma magistral y consiguió batir a todos sus competidores provenientes del aprendizaje estadístico. La red tiene dos partes bien diferenciadas: una compuesta por redes convolucionales y otra por redes densas. La primera realiza una <strong>extracción automática de características</strong>, mientras que la segunda es la parte propiamente de aprendizaje, o <strong>clasificación</strong>. Esta es la estructura de la red:</p>
+<p><img alt="1_bD_DMBtKwveuzIkQTwjKQQ.png" src="attachment:1_bD_DMBtKwveuzIkQTwjKQQ.png" /></p>
+<p>En la figura vemos varias palabras y elementos desconocidos:</p>
+<ul class="simple">
+<li><p>Hay unos elementos en tres dimensiones (ortoedros) que tienen una anchura, altura y profundidad. Estos representan las <strong>capas convolucionales</strong>.</p></li>
+<li><p>Hay otros elementos que son rectángulos en dos dimensiones: las <strong>capas densas</strong>, <em>fully connected</em>, o como las hemos visto en la parte anterior <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code>.</p></li>
+<li><p>Entre cada capa aparece un rectángulo azul de diferente tamaño que conecta unas capas y otras. este es el <strong>reception field</strong>, o campo de recepción de una neurona convolucional.</p></li>
+<li><p>Hay una interconexión entre capas convolucionales que se llama <strong>max pooling</strong>.</p></li>
+<li><p>Aparece la palabra <strong>stride</strong>.</p></li>
+</ul>
+<p>Con excepción de las capas densas, estos elementos son todavía desconocidos. Ahora nos adentraremos en el proceloso mundo de las arquitecturas convolucionales…</p>
+<div class="section" id="capas-convolucionales">
+<h3><span class="section-number">4.2.1. </span>Capas Convolucionales<a class="headerlink" href="#capas-convolucionales" title="Permalink to this headline">¶</a></h3>
+<p><em>¿Qué son las <strong>capas convolucionales</strong>?, dices mientras clavas en mi pupila tu pupila azul</em>…</p>
+<p>Existe una tradición que considera las capas convolucionales como una arquitectura que realiza la convolución entre una imagen y un filtro. No es que sea errónea. Pero a los del procesado de señal nos hace pensar que realiza operaciones de alto nivel, cuando en realidad no son más que neuronas que hacen lo mismo que las de las capas lineales. Una neurona convolucional realiza la operación:
+$<span class="math notranslate nohighlight">\( y_i^n = f(\mathbf{w^n}*\mathbf{y_{i}^{n-1}}+b_i^n)\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>n<span class="math notranslate nohighlight">\( es el número de capa (la capa de entrada es la 0), \)</span>i<span class="math notranslate nohighlight">\( el número de neurona dentro de cada capa y \)</span>f()<span class="math notranslate nohighlight">\( es una función de activación. **¿Os suena?** Es casi idéntico a la capa lineal. Solo que esta vez cambian los términos \)</span>\mathbf{y_{i}^{n-1}}<span class="math notranslate nohighlight">\( y \)</span>\mathbf{w^n}$:</p>
+<ul class="simple">
+<li><p>En el <span class="math notranslate nohighlight">\(\mathbf{y_{i}^{n-1}}\)</span> aparece un subíndice <span class="math notranslate nohighlight">\(i\)</span> que implica que, de alguna forma, para la neurona <span class="math notranslate nohighlight">\(i\)</span> de la capa <span class="math notranslate nohighlight">\(n\)</span> solo utilizaremos una parte de las salidas de la capa anterior. Concretamente una porción rectangular que conocemos como el <strong>reception field</strong>, el campo de recepción, también conocido como <strong>tamaño de kernel</strong>. Cada neurona convolucional sólo va a fijarse en ésa parte de la imagen (o de la salida de la capa) anterior. En general, siempre va a ser un número impar, por simplicidad.</p></li>
+<li><p>En el <span class="math notranslate nohighlight">\(\mathbf{w^n}\)</span>, sin embargo, ha desaparecido el subíndice <span class="math notranslate nohighlight">\(i\)</span>. ¿Qué implica esto? Significa que la matriz de pesos es <strong>compartida</strong> por todas las neuronas de la capa <span class="math notranslate nohighlight">\(n\)</span>, lo cual ahorra ingentes cantidades de memoria, y a la vez, es lo que hace que esta capa pueda realizar una <strong>convolución</strong>. Esa matriz de pesos también se conoce como <strong>filtros</strong>, y tendrá como tamaño <code class="docutils literal notranslate"><span class="pre">(F,W,H)</span></code>, donde <code class="docutils literal notranslate"><span class="pre">F</span></code> es el “número de filtros”, y <code class="docutils literal notranslate"><span class="pre">W</span></code> y <code class="docutils literal notranslate"><span class="pre">H</span></code> el tamaño del filtro, que es el mismo que el tamaño de kernel.
+Visualmente, esta capa hace algo así:
+<img alt="convolutional_layer.png" src="attachment:convolutional_layer.png" /></p></li>
+</ul>
+<p>Adicionalmente, las capas convolucionales tienen un parámetro que se llama <strong>stride</strong>, que hemos comentado anteriormente. Este parámetro es la distancia entre los <em>reception field</em> de las neuronas:</p>
+<ul class="simple">
+<li><p>un valor <code class="docutils literal notranslate"><span class="pre">stride=1</span></code>, indica que el centro de un <em>reception field</em> y el siguiente están a distancia 1 unidad.</p></li>
+<li><p>un valor <code class="docutils literal notranslate"><span class="pre">stride=2</span></code>, indica que entre el centro de un <em>reception field</em> y el siguiente habrá 2 unidades de distancia</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Cuanto mayor es el stride, menor será la superposición entre reception fields, y menor será el tamaño de la salida resultante de esa capa convolucional.</p>
+</div>
+<div class="section" id="max-pooling">
+<h3><span class="section-number">4.2.2. </span>Max Pooling<a class="headerlink" href="#max-pooling" title="Permalink to this headline">¶</a></h3>
+<p><strong>Max pooling</strong> es una operación para reducir el tamaño de los mapas de salida. Para ello divide el mapa de entrada en reception fields de <code class="docutils literal notranslate"><span class="pre">(W,H)</span></code> con un determinado <em>stride</em> entre ellos y calcula el máximo de cada uno. El mapa resultante será el mapa que contiene los máximos de cada reception field. Por ejemplo, para un <code class="docutils literal notranslate"><span class="pre">stride=2</span></code> y <code class="docutils literal notranslate"><span class="pre">pooling=2</span></code>, tenemos un mapa que se ha reducido a la mitad:
+<img alt="Max_pooling.png" src="attachment:Max_pooling.png" /></p>
+<p>Con estas herramientas podemos ya diseñar nuestra propia <strong>Alexnet</strong> para clasificar números en MNIST.</p>
+</div>
+</div>
+<div class="section" id="realizacion-practica">
+<h2><span class="section-number">4.3. </span>Realización práctica<a class="headerlink" href="#realizacion-practica" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparacion-de-librerias-y-datos">
+<h3><span class="section-number">4.3.1. </span>Preparación de librerías y datos:<a class="headerlink" href="#preparacion-de-librerias-y-datos" title="Permalink to this headline">¶</a></h3>
+<p>En primer lugar vamos a importar pytorch, algunos módulos de la librería, y la librería de visualización <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, como hicimos en la parte anterior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">dset</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">make_grid</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos a crear el <code class="docutils literal notranslate"><span class="pre">dataloader</span></code> (cargador) de los datos de MNIST. Si hace falta se cargarán de nuevo, utilizando la utilidad <code class="docutils literal notranslate"><span class="pre">torchvision.datasets</span></code> y <code class="docutils literal notranslate"><span class="pre">torch.utils.Dataloader</span></code>. Posteriormente definiremos la función <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> para mostrar un batch de los datos cargados. Todo este código es igual que el de la parte anterior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()])</span> <span class="c1">#Transformador para el dataset</span>
+<span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;./data/&#39;</span>
+<span class="c1"># definimos los conjuntos de training y test</span>
+<span class="n">train_set</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1"># definimos el batchsize</span>
+
+<span class="c1"># y creamos los dataloaders para training y testing</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+                 <span class="n">dataset</span><span class="o">=</span><span class="n">train_set</span><span class="p">,</span>
+                 <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                 <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+                <span class="n">dataset</span><span class="o">=</span><span class="n">test_set</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Y definimos de nuevo la función de mostrar un batch de los datos</span>
+<span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>     <span class="c1"># desnormalizar</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> 
+    <span class="c1"># cambiamos las dimensiones para que el número de canales </span>
+    <span class="c1"># se muestre al final (por defecto en matplotlib)</span>
+
+<span class="c1"># convertimos train_loader en un iterador</span>
+<span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span> 
+<span class="c1"># y recuperamos el i-esimo elemento, un par de valores (imagenes, etiquetas)</span>
+<span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataiter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+
+<span class="c1"># Usamos la función imshow que hemos definido para mostrar imágenes</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">make_grid</span><span class="p">(</span><span class="n">images</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03_cnn_6_0.png" src="_images/03_cnn_6_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="diseno-de-la-red-neuronal">
+<h2><span class="section-number">4.4. </span>Diseño de la red neuronal<a class="headerlink" href="#diseno-de-la-red-neuronal" title="Permalink to this headline">¶</a></h2>
+<p>Ahora viene el meollo de la cuestión. Podríamos crear una red neuronal como una clase <code class="docutils literal notranslate"><span class="pre">Alexnet</span></code>. Sin embargo, este tipo de red requiere unas capacidades de computación que no todos tienen, y su entrenamiento está optimizado para su uso con GPU. En lugar de ello, vamos a utilizar una red llamada <a class="reference external" href="https://en.wikipedia.org/wiki/LeNet">LeNet</a>, que fue la precursora de Alexnet, y que tuvo un gran impacto también. Hay que tener en cuenta que el tamaño de las imágenes MNIST es 28x28 con 1 canal (escala de grises) mientras que el de Imagenet (la base de datos que usaba el Alexnet original) es de 224x224, y con 3 canales (RGB). La arquitectura de <code class="docutils literal notranslate"><span class="pre">LeNet</span></code> quedará:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conv1</span></code>: Convolución sin <code class="docutils literal notranslate"><span class="pre">stride</span></code> y 6 filtros para un reception field de 5x5.</p></li>
+<li><p>Max-pooling de 2 sin <code class="docutils literal notranslate"><span class="pre">stride</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conv2</span></code>: Convolución sin <code class="docutils literal notranslate"><span class="pre">stride</span></code>, 16 filtros, reception field de 5x5.</p></li>
+<li><p>Max-pooling de 2 sin <code class="docutils literal notranslate"><span class="pre">stride</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conv3</span></code>: Convolución sin stride, 120 filtros, reception field de 3x3.</p></li>
+<li><p>Cambio a capas lineales (usar <code class="docutils literal notranslate"><span class="pre">tensor.view()</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fc1</span></code>: Capa densa (linear) de 256 neuronas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fc2</span></code>: Capa densa (linear) de 10 neuronas.</p></li>
+</ul>
+<p><img alt="rect3703.png" src="attachment:rect3703.png" /></p>
+<p>Todas las capas convolucionales y densas utilizarán activación <code class="docutils literal notranslate"><span class="pre">ReLU</span></code>, salvo la última, que utilizará la función <code class="docutils literal notranslate"><span class="pre">SoftMax</span></code>, como en el perceptrón multicapa.</p>
+<p>Aquí se listan los comandos utilizados para crear las diferentes capas:</p>
+<ul class="simple">
+<li><p>Capa convolucional de 2 dimensiones: <code class="docutils literal notranslate"><span class="pre">nn.Conv2d(in_channels,</span> <span class="pre">out_channels,</span> <span class="pre">kernel_size,</span> <span class="pre">padding,</span> <span class="pre">stride=1)</span></code>. <code class="docutils literal notranslate"><span class="pre">in_channels</span></code> será el número de canales de entrada, <code class="docutils literal notranslate"><span class="pre">out_channels</span></code> el número de canales de salida, que es lo mismo que el número de filtros, <code class="docutils literal notranslate"><span class="pre">kernel_size</span></code> será el tamaño del kernel, o del <em>reception field</em>, que si es cuadrado basta con poner un entero igual al tamaño de un lado y <code class="docutils literal notranslate"><span class="pre">stride</span></code> ya lo conocéis. El <code class="docutils literal notranslate"><span class="pre">padding</span></code> lo vamos a poner al entero inferior de <code class="docutils literal notranslate"><span class="pre">kernel_size/2</span></code> (asumiendo que <code class="docutils literal notranslate"><span class="pre">kernel_size</span></code> sea impar), o sea, si <code class="docutils literal notranslate"><span class="pre">kernel_size</span></code> es 3, pondremos <code class="docutils literal notranslate"><span class="pre">padding=1</span></code>, si <code class="docutils literal notranslate"><span class="pre">ks=5</span></code>, <code class="docutils literal notranslate"><span class="pre">padding=2</span></code>, etc. Consulta <a class="reference external" href="https://www.geeksforgeeks.org/cnn-introduction-to-padding/">aqui</a> para profundizar sobre el <em>padding</em>.</p></li>
+<li><p>Max-pooling: <code class="docutils literal notranslate"><span class="pre">nn.MaxPool2d(kernel_size,</span> <span class="pre">stride=None)</span></code>.</p></li>
+<li><p>Y el resto, son <code class="docutils literal notranslate"><span class="pre">nn.Linear()</span></code>, las funciones <code class="docutils literal notranslate"><span class="pre">F.relu()</span></code> y <code class="docutils literal notranslate"><span class="pre">F.softmax()</span></code>, y el método <code class="docutils literal notranslate"><span class="pre">.view()</span></code> de los tensores de pytorch.</p></li>
+</ul>
+<p>Si necesitas más detalles, te dejamos aquí una celda que utiliza la ayuda de jupyter. Esto es, escribiendo una función u objeto y añadiendo <code class="docutils literal notranslate"><span class="pre">?</span></code> al final, y ejecutando. También puedes consultar la <a class="reference external" href="https://pytorch.org/docs/stable/nn.html">ayuda de pytorch</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nn.Conv2d<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">images</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mp1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([16, 16, 14, 14])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Todavía hay que hacer un cálculo más, y es que para pasar de la útima capa convolucional a las capas fully-connected (<code class="docutils literal notranslate"><span class="pre">nn.Linear()</span></code>) tenemos que linealizar la salida de la capa. Si recordáis de la parte anterior, para una matriz <code class="docutils literal notranslate"><span class="pre">x</span></code>, esto se hace con <code class="docutils literal notranslate"><span class="pre">x.view(tam_x,tam_y)</span></code>. Para este caso tenemos que usar <code class="docutils literal notranslate"><span class="pre">x.view(-1,</span> <span class="pre">tam_y)</span></code>, donde <code class="docutils literal notranslate"><span class="pre">tam_y</span></code> será el tamaño del vector resultante de linealizar la salida de la capa <code class="docutils literal notranslate"><span class="pre">conv3</span></code>. Para ello tenemos que conocer, a priori, el tamaño que tendrá. ¿Y cual será ese tamaño?</p>
+<p>Pues para conocerlo hay que propagar el tamaño. Si el batch size es <code class="docutils literal notranslate"><span class="pre">BS</span></code>, y las imagenes tienen tamaño <code class="docutils literal notranslate"><span class="pre">(1,xx,yy)</span></code> (en el caso de MNIST, <code class="docutils literal notranslate"><span class="pre">(1,28,28)</span></code>), la salida de <code class="docutils literal notranslate"><span class="pre">conv1</span></code> será <code class="docutils literal notranslate"><span class="pre">(BS,F1,xx,yy)</span></code> siempre que hayáis utilizado el padding sugerido (el entero inferor a <code class="docutils literal notranslate"><span class="pre">F1/2</span></code>), con F1 el número de filtros de <code class="docutils literal notranslate"><span class="pre">conv1</span></code> (en el caso sugerido, 6). Después pasa por un max_pooling, donde el tamaño se divide a la mitad, con lo que a la salida de mp1 nos queda un tamaño de <code class="docutils literal notranslate"><span class="pre">(BS,F1,xx/2,yy/2)</span></code>. A la salida de <code class="docutils literal notranslate"><span class="pre">conv2</span></code>, tendremos <code class="docutils literal notranslate"><span class="pre">(BS,F2,xx/2,yy/2)</span></code>, con <code class="docutils literal notranslate"><span class="pre">F2</span></code> el número de filtros de <code class="docutils literal notranslate"><span class="pre">conv2</span></code>, y al pasar por el max pooling <code class="docutils literal notranslate"><span class="pre">mp2</span></code>, tendremos <code class="docutils literal notranslate"><span class="pre">(BS,F2,xx/4,yy/4)</span></code>. Por último, al pasar por <code class="docutils literal notranslate"><span class="pre">conv3</span></code>, el tamaño de salida se convierte en <code class="docutils literal notranslate"><span class="pre">(BS,F3,xx/4,yy/4)</span></code>. Así pues, como queremos llegar a un tamaño de <code class="docutils literal notranslate"><span class="pre">(BS,L)</span></code>, con <code class="docutils literal notranslate"><span class="pre">L</span></code> el número de características totales para cada imagen, <code class="docutils literal notranslate"><span class="pre">L</span></code> será <code class="docutils literal notranslate"><span class="pre">F3*xx/4*yy/4</span></code>, o sea, <code class="docutils literal notranslate"><span class="pre">F3*xx*yy/16</span></code>.</p>
+<p>Ahora, ya puedes implementar <code class="docutils literal notranslate"><span class="pre">LeNet</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LeNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LeNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># esta linea es siempre necesaria</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mp1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mp2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">120</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="c1">#capa oculta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="c1">#capa de salida</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mp1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mp2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">120</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="c1">#Función de activación relu en la salida de la capa oculta</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#Función de activación softmax en la salida de la capa oculta</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definimos el <code class="docutils literal notranslate"><span class="pre">model</span></code>, el loss y el optimizador, como en el caso anterior. Si queréis podéis probar otras variantes de optimizadores, como <code class="docutils literal notranslate"><span class="pre">optim.Adam()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LeNet</span><span class="p">()</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span> <span class="c1"># definimos la pérdida</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LeNet(
+  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+  (mp1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+  (mp2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv3): Conv2d(16, 120, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (fc1): Linear(in_features=5880, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=10, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y a continuación vamos a entrenar el modelo. Os recomendamos utilizar unas 20 epochs como mínimo, aunque si va rápido en vuestro ordenador, podéis incrementar este número.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span> <span class="c1"># Esta será la parte de entrenamiento</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># el loss en cada epoch de entrenamiento</span>
+    <span class="n">running_acc</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># el accuracy de cada epoch</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># ponemos a cero todos los gradientes en todas las neuronas</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># forward + backward + optimizar</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="c1"># forward-pass </span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="c1"># evaluación del loss</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span><span class="c1"># backward pass</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># optimización </span>
+
+        <span class="c1"># Mostramos las estadísticas</span>
+        <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># acumulamos el loss de este batch</span>
+        <span class="c1"># extraemos las etiquetas que predice (nº neurona con máxima probabilidad)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+        <span class="n">running_acc</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predicted</span><span class="o">==</span><span class="n">labels</span><span class="p">)</span> <span class="c1"># y acumulamos el número de correctos</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&gt;&gt;&gt; Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1"> &gt;&gt;&gt;&gt; Loss: </span><span class="si">{</span><span class="n">running_loss</span><span class="o">/</span><span class="n">total</span><span class="si">}</span><span class="s1">, Acc: </span><span class="si">{</span><span class="n">running_acc</span><span class="o">/</span><span class="n">total</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train
+&gt;&gt;&gt; Epoch 0 &gt;&gt;&gt;&gt; Loss: 0.01791902374426524, Acc: 0.22023333609104156
+Train
+&gt;&gt;&gt; Epoch 1 &gt;&gt;&gt;&gt; Loss: 0.013324498097101848, Acc: 0.7682833075523376
+Train
+&gt;&gt;&gt; Epoch 2 &gt;&gt;&gt;&gt; Loss: 0.012601996821165085, Acc: 0.8523333072662354
+Train
+&gt;&gt;&gt; Epoch 3 &gt;&gt;&gt;&gt; Loss: 0.0124462657392025, Acc: 0.871233344078064
+Train
+&gt;&gt;&gt; Epoch 4 &gt;&gt;&gt;&gt; Loss: 0.011892222328980764, Acc: 0.9433333277702332
+Train
+&gt;&gt;&gt; Epoch 5 &gt;&gt;&gt;&gt; Loss: 0.011674345209201176, Acc: 0.9704499840736389
+Train
+&gt;&gt;&gt; Epoch 6 &gt;&gt;&gt;&gt; Loss: 0.011635089653730392, Acc: 0.9747499823570251
+Train
+&gt;&gt;&gt; Epoch 7 &gt;&gt;&gt;&gt; Loss: 0.011614095666011175, Acc: 0.9769333600997925
+Train
+&gt;&gt;&gt; Epoch 8 &gt;&gt;&gt;&gt; Loss: 0.01159169866045316, Acc: 0.9796500205993652
+Train
+&gt;&gt;&gt; Epoch 9 &gt;&gt;&gt;&gt; Loss: 0.011569740043083827, Acc: 0.9825999736785889
+Train
+&gt;&gt;&gt; Epoch 10 &gt;&gt;&gt;&gt; Loss: 0.011556183155377707, Acc: 0.9839500188827515
+Train
+&gt;&gt;&gt; Epoch 11 &gt;&gt;&gt;&gt; Loss: 0.011543800429503122, Acc: 0.9855999946594238
+Train
+&gt;&gt;&gt; Epoch 12 &gt;&gt;&gt;&gt; Loss: 0.011533848734696706, Acc: 0.9868833422660828
+Train
+&gt;&gt;&gt; Epoch 13 &gt;&gt;&gt;&gt; Loss: 0.011526075430711111, Acc: 0.9878333210945129
+Train
+&gt;&gt;&gt; Epoch 14 &gt;&gt;&gt;&gt; Loss: 0.011521399462223053, Acc: 0.988183319568634
+Train
+&gt;&gt;&gt; Epoch 15 &gt;&gt;&gt;&gt; Loss: 0.011515843131144841, Acc: 0.9891166687011719
+Train
+&gt;&gt;&gt; Epoch 16 &gt;&gt;&gt;&gt; Loss: 0.011510863087574642, Acc: 0.9894833564758301
+Train
+&gt;&gt;&gt; Epoch 17 &gt;&gt;&gt;&gt; Loss: 0.011502736872434615, Acc: 0.9904166460037231
+Train
+&gt;&gt;&gt; Epoch 18 &gt;&gt;&gt;&gt; Loss: 0.011495884642998378, Acc: 0.9913166761398315
+Train
+&gt;&gt;&gt; Epoch 19 &gt;&gt;&gt;&gt; Loss: 0.011498651460806529, Acc: 0.9910333156585693
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y ahora comprobamos la precisión de la red con los datos de test. Sigue los pasos detallados en comentarios.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="c1"># hay que deshabilitar la propagación de gradiente</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="c1"># forward pass</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># estimación de etiquetas</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> 
+        <span class="n">correct</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="c1"># acumular el número de datos correctos. </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precisión del modelo en las imágenes de test: </span><span class="si">{</span><span class="n">correct</span> <span class="o">/</span> <span class="n">total</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión del modelo en las imágenes de test: 0.9886
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si habéis entrenado por más de 20 epochs y todo está correcto, deberíais haber tenido una precisión muy alta, en torno al 98% (0.98). Esto, de por sí, ya es mejor que el perceptrón multicapa. Como en el caso anterior, es interesante ver donde se ha equivocado el modelo, así que utilizamos la misma función:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">muestra_predicciones</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># numero de elementos de cada categoría a mostrar (nx2 total)</span>
+    <span class="c1">#init:</span>
+    <span class="n">ncorrect</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">nwrong</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1"># tamaño de los bloques. </span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="p">,)</span><span class="o">+</span><span class="n">loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="c1"># este es el tamaño de la salida: </span>
+    <span class="n">n_salida</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children</span><span class="p">())[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">out_features</span>
+    
+    <span class="c1"># para almacenar los datos</span>
+    <span class="n">im_correct_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">im_wrong_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">output_correct_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n_salida</span><span class="p">))</span>
+    <span class="n">output_wrong_display</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n_salida</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="c1"># hay que deshabilitar la propagación de gradiente</span>
+        <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="c1"># forward pass</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># obtención de etiquetas numéricas</span>
+            <span class="n">aciertos</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">==</span><span class="n">labels</span>
+
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">aciertos</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">ncorrect</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aciertos</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># obtiene los indices de los elementos correctamente clasificados</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ix</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="n">ncorrect</span><span class="p">]):</span>
+                    <span class="n">im_correct_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">ncorrect</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                    <span class="n">output_correct_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">ncorrect</span><span class="p">]</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                <span class="n">ncorrect</span> <span class="o">=</span> <span class="n">ncorrect</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">aciertos</span><span class="o">==</span><span class="kc">False</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">nwrong</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aciertos</span><span class="o">==</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># obtiene los indices de los elementos incorrectamente clasificados</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ix</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="n">nwrong</span><span class="p">]):</span>
+                    <span class="n">im_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">nwrong</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                    <span class="n">output_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">nwrong</span><span class="p">]</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+                <span class="n">nwrong</span> <span class="o">=</span> <span class="n">nwrong</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">ncorrect</span><span class="o">&gt;=</span><span class="n">n</span> <span class="ow">and</span> <span class="n">nwrong</span><span class="o">&gt;=</span><span class="n">n</span><span class="p">:</span>
+                <span class="k">break</span> <span class="c1"># si ya tenemos n correctos y n incorrectos, nos salimos</span>
+
+
+    <span class="c1"># Y ahora mostramos todos estos casos: </span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># esto crea un subplot de 4x2 </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_correct_display</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">output_correct_display</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Imagenes&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Probabilidades&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">output_wrong_display</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="c1"># y usamos la función: </span>
+<span class="n">muestra_predicciones</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03_cnn_20_0.png" src="_images/03_cnn_20_0.png" />
+</div>
+</div>
+<div class="section" id="otras-alternativas">
+<h3><span class="section-number">4.4.1. </span>Otras alternativas:<a class="headerlink" href="#otras-alternativas" title="Permalink to this headline">¶</a></h3>
+<p>Ahora os animo a probar otras configuraciones, cambiando los parámetros de la red, como tamaño y número de filtros, número de neuronas, o incluso probando otro tipo de optimizador (consulta las <a class="reference external" href="https://pytorch.org/docs/stable/optim.html">opciones disponibles en pytorch</a>). Si te atreves -y tu ordenador puede-, puedes probar a añadir o quitar alguna capa. Cuenta tus impresiones acerca de qué ocurre al variar estos parámetros (si cambia la precisión máxima obtenida en test o la velocidad de convergencia -lo rápido que alcanza máxima precision-) n este recuadro:</p>
+<p>Y esto es todo. Espero que os haya resultado útil. El mundo de las redes neuronales es enorme, y caben un millón de arquitecturas. En esta práctica solo pretendemos que conozcáis las herramientas que existen, y cómo se utilizan. A partir de aquí, el cielo es el límite!</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="02_mlp.html" title="previous page"><span class="section-number">3. </span>El perceptrón multicapa</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

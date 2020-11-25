@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Introducción &#8212; Iniciación a las redes neuronales con pyTorch</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Pytorch" href="01_pytorch.html" />
+    <link rel="prev" title="Iniciación a las redes neuronales con pyTorch" href="landing-page.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Iniciación a las redes neuronales con pyTorch</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   Iniciación a las redes neuronales con pyTorch
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_pytorch.html">
+   2. PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_mlp.html">
+   3. El Perceptrón Multicapa
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_cnn.html">
+   4. Redes Convolucionales
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/00_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pakitochus/tutorial_pytorch"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pakitochus/tutorial_pytorch/master?urlpath=tree/00_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-es-el-deep-learning">
+   1.1. ¿Qué es el Deep Learning?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparacion-del-material">
+   1.2. Preparación del material
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribucion-anaconda">
+     1.2.1. Distribución Anaconda
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#windows">
+       1.2.1.1. Windows
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#macos">
+       1.2.1.2. MacOS
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linux">
+       1.2.1.3. Linux
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verificar-la-instalacion-de-anaconda">
+       1.2.1.4. Verificar la instalación de Anaconda
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-notebook">
+     1.2.2. Jupyter Notebook
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#abrir-jupyter">
+       1.2.2.1. Abrir Jupyter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch">
+     1.2.3. PyTorch
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alternativas-a-pytorch">
+       1.2.3.1. Alternativas a PyTorch
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instalacion-de-pytorch">
+       1.2.3.2. Instalación de Pytorch
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verificar-la-instalacion">
+       1.2.3.3. Verificar la instalación
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduccion">
+<h1><span class="section-number">1. </span>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="que-es-el-deep-learning">
+<h2><span class="section-number">1.1. </span>¿Qué es el Deep Learning?<a class="headerlink" href="#que-es-el-deep-learning" title="Permalink to this headline">¶</a></h2>
+<p>Según la <a class="reference external" href="https://es.wikipedia.org/wiki/Aprendizaje_profundo">Wikipedia</a>, el <em>Deep Learning</em> o <strong>aprendizaje profundo</strong> es un conjunto de algoritmos de aprendizaje automático que intenta modelar abstracciones de alto nivel en datos utilizando arquitecturas computacionales que admiten transformaciones no lineales múltiples e iterativas de datos expresados en forma matricial o tensorial.</p>
+<p>Esto se realiza mediante el uso de <a class="reference external" href="https://es.wikipedia.org/wiki/Red_neuronal_artificial">redes neuronales</a> de múltiples capas en una grandísima variedad de arquitecturas. Podéis ver una charla sobre <em>deep learning</em>, redes neuronales y diferentes arquitecturas en este canal de youtube:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;KqRnYGVjSNs&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="c1"># Ir a la URL: https://www.youtube.com/watch?v=KqRnYGVjSNs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="400"
+    src="https://www.youtube.com/embed/KqRnYGVjSNs"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>O una versión rápida de dicha introducción en 3 minutos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;4xaPxNPr43w&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="c1"># Ir a la URL: https://www.youtube.com/watch?v=4xaPxNPr43w</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="800"
+    height="400"
+    src="https://www.youtube.com/embed/4xaPxNPr43w"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="preparacion-del-material">
+<h2><span class="section-number">1.2. </span>Preparación del material<a class="headerlink" href="#preparacion-del-material" title="Permalink to this headline">¶</a></h2>
+<p>Para la realización de la práctica vamos a utilizar los siguientes <strong>recursos</strong>:</p>
+<ul class="simple">
+<li><p>Lenguaje de programación <strong>Python 3</strong> (recomendada la distribución <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda</a>)</p></li>
+<li><p>Formato de archivos: <a class="reference external" href="https://jupyter.org">Jupyter notebook</a></p></li>
+<li><p>Librería <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch</a></p></li>
+<li><p>Bases de datos de imágenes MNIST handwritten digit database</p></li>
+</ul>
+<p>En las siguientes secciones veremos qué es y cómo se instalan dichos componentes.</p>
+<p><img alt="cropped-Anaconda_horizontal_RGB-1-600x102.png" src="attachment:cropped-Anaconda_horizontal_RGB-1-600x102.png" /></p>
+<div class="section" id="distribucion-anaconda">
+<h3><span class="section-number">1.2.1. </span>Distribución Anaconda<a class="headerlink" href="#distribucion-anaconda" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda</a> es una distribución del lenguaje de programación Python, orientada a la ciencia e ingeniería. Dispone de numerosas librerías que facilitan el trabajo como <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (computación con arrays), <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (estadística y procesado de señal) o <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (machine learning), entre otras muchas, convirtiéndola en la mayor <strong>rival de Matlab</strong>. Ésto, unido a que es <strong>software libre</strong> han hecho que su popularidad se haya visto incrementada en los últimos años, llegando a ser el lenguaje de programación más popular, incluso por encima de Java:</p>
+<p><img alt="Captura%20de%20pantalla%20de%202020-04-23%2009-09-40.png" src="attachment:Captura%20de%20pantalla%20de%202020-04-23%2009-09-40.png" /></p>
+<p>Fijáos en como la popularidad de matlab decrece conforme aumenta la de python, porque están muy relacionadas.</p>
+<p>Para la instalación de Anaconda nos vamos a su <a class="reference external" href="https://www.anaconda.com/distribution/">página oficial</a> o directamente lo descargamos en su versión para:</p>
+<ul class="simple">
+<li><p>Windows <a class="reference external" href="https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe">Descarga</a></p></li>
+<li><p>MacOSX <a class="reference external" href="https://repo.anaconda.com/archive/Anaconda3-2020.02-MacOSX-x86_64.pkg">Descarga</a></p></li>
+<li><p>Linux <a class="reference external" href="https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh">Descarga</a></p></li>
+</ul>
+<p>Una vez descargado, realizamos la instalación de dicho paquete. Se detallan a continuación los pasos en cada sistema operativo.</p>
+<div class="section" id="windows">
+<h4><span class="section-number">1.2.1.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Ejecutar el archivo y “siguiente”</p></li>
+<li><p>Leer la licencia y click en “I Agree”.</p></li>
+<li><p>Selecciona una instalación “Solo para mi” (a menos que vayas a compartir el ordenador con otros usuarios).</p></li>
+<li><p>Selecciona una carpeta de destino para instalar Anaconda y haz clic en el botón Siguiente.</p></li>
+<li><p>Elegir si desea añadir Anaconda a su variable de entorno PATH. Se recomienda <strong>no</strong> añadir Anaconda a la variable de entorno del PATH, ya que puede interferir con otros programas y en su lugar utilizarla abriendo el “Anaconda Navigator” desde el menú de inicio.</p></li>
+<li><p>Elegir si desea registrar Anaconda como Python predeterminado. A menos que tengas instaladas o quieras ejecutar varias versiones de Anaconda o varias versiones de Python, dejar la casilla predeterminada marcada.</p></li>
+<li><p>Haz clic en el botón Instalar. Si quieres ver los paquetes que Anaconda está instalando, haz clic en Mostrar detalles.</p></li>
+<li><p>Haga clic en el botón Siguiente.</p></li>
+<li><p>Os ofrecerá instalar PyCharm, un IDE para desarrollo en python. Nosotros no lo vamos a utilizar, así que si no queréis o no sabéis que es, click en “Siguiente”.</p></li>
+<li><p>Después de una instalación exitosa verá el cuadro de diálogo “Gracias por instalar Anaconda”</p></li>
+</ol>
+</div>
+<div class="section" id="macos">
+<h4><span class="section-number">1.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Haga doble clic en el archivo descargado y haga clic en continuar para iniciar la instalación.</p></li>
+<li><p>Responda a las preguntas de las pantallas de Introducción, Léame y Licencia.</p></li>
+<li><p>Haga clic en el botón Instalar para instalar Anaconda en su directorio ~/opt (recomendado):</p></li>
+<li><p>En la pantalla de selección de destino, seleccione Instalar sólo para mí.</p>
+<ul class="simple">
+<li><p>Si aparece el mensaje de error “No puede instalar Anaconda en esta ubicación”, vuelva a seleccionar Instalar sólo para mí.</p></li>
+</ul>
+</li>
+<li><p>Haga clic en el botón de continuar.</p></li>
+<li><p>Os ofrecerá instalar PyCharm, un IDE para desarrollo en python. Nosotros no lo vamos a utilizar, así que si no queréis o no sabéis que es, click en “Siguiente”.</p></li>
+<li><p>Después de una instalación exitosa verá el cuadro de diálogo “Gracias por instalar Anaconda”</p></li>
+</ol>
+</div>
+<div class="section" id="linux">
+<h4><span class="section-number">1.2.1.3. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Abre la temrinal y navega hasta la carpeta de descargas</p></li>
+<li><p>Introduce: <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/Descargas/Anaconda3-2020.02-Linux-x86_64.sh</span></code> o el nombre del archivo descargado. Incluya el comando bash sin importar si está usando o no el shell Bash.</p></li>
+<li><p>El instalador le pide “Para continuar el proceso de instalación, por favor revise el acuerdo de licencia”. Haz clic en Intro para ver los términos de la licencia. Desplácese hasta la parte inferior de los términos de la licencia e introduzca “Sí” para aceptar.</p></li>
+<li><p>El instalador le pedirá que haga clic en Intro para aceptar la ubicación de instalación predeterminada, en <code class="docutils literal notranslate"><span class="pre">/home/&lt;usuario&gt;/anaconda3</span></code></p></li>
+<li><p>El instalador pregunta: “¿Desea que el instalador inicialice Anaconda3 ejecutando conda init?” Recomendamos “sí”. Si por error respondes no, puedes añadir anaconda al path con el paso siguiente:</p>
+<ul class="simple">
+<li><p>primero ejecute <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/home/&lt;usuario&gt;/anaconda3/bin/activate</span></code> y luego ejecute <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span></code></p></li>
+</ul>
+</li>
+<li><p>El instalador termina y muestra “¡Gracias por instalar Anaconda3!”</p></li>
+</ol>
+</div>
+<div class="section" id="verificar-la-instalacion-de-anaconda">
+<h4><span class="section-number">1.2.1.4. </span>Verificar la instalación de Anaconda<a class="headerlink" href="#verificar-la-instalacion-de-anaconda" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Windows: Haga clic en Inicio, busque o seleccione Anaconda Navigator en el menú.</p></li>
+<li><p>macOS: Haga clic en el Launchpad, seleccione el Anaconda Navigator. O, usa Cmd+Espacio para abrir Búsqueda y escribe “Navegador” para abrir el programa.</p></li>
+<li><p>Linux: Abre la terminal y escribe <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>, que listará todos los paquetes de Anaconda.</p></li>
+</ul>
+<p>Para <strong>solución de problemas</strong>, consultar la <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">documentación de Anaconda</a>.</p>
+<p><img alt="nav_logo.svg" src="attachment:nav_logo.svg" /></p>
+</div>
+</div>
+<div class="section" id="jupyter-notebook">
+<h3><span class="section-number">1.2.2. </span>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>El <strong>Jupyter Notebook</strong> es una aplicación web de código abierto que permite crear y compartir documentos que contienen código en vivo, ecuaciones, visualizaciones y texto narrativo. Sus usos incluyen: limpieza y transformación de datos, simulación numérica, modelado estadístico, visualización de datos, aprendizaje automático y mucho más.</p>
+<p><strong>Jupyter</strong> se instala por defecto con Anaconda, de modo que solo es necesario lanzarlo.</p>
+<div class="section" id="abrir-jupyter">
+<h4><span class="section-number">1.2.2.1. </span>Abrir Jupyter<a class="headerlink" href="#abrir-jupyter" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Windows:</p>
+<ol class="simple">
+<li><p>Haga clic en Inicio, lance Anaconda Navigator en el menú.</p></li>
+<li><p>Seleccione “Jupyter.</p></li>
+</ol>
+</li>
+<li><p>macOS:</p>
+<ol class="simple">
+<li><p>Haga clic en el Launchpad, seleccione el Anaconda Navigator.</p></li>
+<li><p>Lanza “Jupyter notebook”</p></li>
+</ol>
+</li>
+<li><p>Linux:</p>
+<ol class="simple">
+<li><p>Abre la terminal</p></li>
+<li><p>Escribe <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code></p></li>
+</ol>
+</li>
+</ul>
+<p>En todos los casos se abrirá una ventana similar a la siguiente, en la que podrás navegar por el árbol de directorios y cargar los notebooks de ipython que quieras. Si quieres probar, navega hasta la carpeta donde hayas descargado esta práctica y selecciona el archivo <code class="docutils literal notranslate"><span class="pre">00</span> <span class="pre">Practica</span> <span class="pre">Deep</span> <span class="pre">Learning</span> <span class="pre">-</span> <span class="pre">Introducción.ipynb</span></code>, y podrás ver este mismo fichero en su versión interactiva.</p>
+<p><img alt="00_2_jupyter_new_notebook.png" src="attachment:00_2_jupyter_new_notebook.png" /></p>
+<p><img alt="logo_pytorch.svg.png" src="attachment:logo_pytorch.svg.png" /></p>
+</div>
+</div>
+<div class="section" id="pytorch">
+<h3><span class="section-number">1.2.3. </span>PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h3>
+<p><strong>PyTorch</strong> es un paquete de Python diseñado para realizar cálculos numéricos haciendo uso de la programación de tensores. Además permite su ejecución en GPU para acelerar los cálculos.</p>
+<p>Normalmente PyTorch es usado tanto para sustituir numpy y procesar los cálculos en GPU como para la investigación y desarrollo en el campo del machine learning, centrado principalmente en el desarrollo de redes neuronales.</p>
+<div class="section" id="alternativas-a-pytorch">
+<h4><span class="section-number">1.2.3.1. </span>Alternativas a PyTorch<a class="headerlink" href="#alternativas-a-pytorch" title="Permalink to this headline">¶</a></h4>
+<p>En la actualidad disponemos de varias alternativas a PyTorch en su aplicación al machine learning, algunas de las más conocidas son:</p>
+<ul class="simple">
+<li><p><strong>Tensorflow</strong>: fue desarrollado por Google Brain Team. Es software libre diseñado para computación numérica mediante grafos.</p></li>
+<li><p><strong>Theano</strong>: es una librería de python que te permite definir, optimizar y evaluar expresiones matemáticas que implican cálculos con arrays multidimensionales de forma eficiente.</p></li>
+<li><p><strong>Keras</strong>: es una API de alto nivel para el desarrollo de redes neuronales escrita en Python. Utiliza otras librerías de forma interna como son Tensorflow, CNTK y Theano. Fue desarrollado con el propósito de facilitar y agilizar el desarrollo y la experimentación con redes neuronales. Hoy día se distribuye junto con <strong>Tensorflow</strong>.</p></li>
+</ul>
+<p>Mediante un análisis de las tendencias en Google Trends, se puede observar que PyTorch no deja de crecer, mientras que Keras y Tensorflow llevan unos meses a la baja. Aún así, Tensorflow sigue siendo el framework más popular, pero desde mi punto de vista es más complejo de dominar, y depende mucho de su API, mientras que la programación en PyTorch es más intuitiva, por lo que es la librería elegida para esta práctica.</p>
+<p><img alt="Captura%20de%20pantalla%20de%202020-04-23%2009-48-37.png" src="attachment:Captura%20de%20pantalla%20de%202020-04-23%2009-48-37.png" /></p>
+</div>
+<div class="section" id="instalacion-de-pytorch">
+<h4><span class="section-number">1.2.3.2. </span>Instalación de Pytorch<a class="headerlink" href="#instalacion-de-pytorch" title="Permalink to this headline">¶</a></h4>
+<p>Para la instalación de pytorch, tenemos que lanzar la consola de <strong>Anaconda</strong>:</p>
+<ul class="simple">
+<li><p>Windows: Haga clic en Inicio, busque o seleccione Anaconda Prompt en el menú.</p></li>
+<li><p>MacOS y Linux: Abrir terminal.</p></li>
+</ul>
+<p>Ahora ve a la <a class="reference external" href="https://pytorch.org/get-started/locally/">página de instalación de pytorch</a> y selecciona las características de tu instalación, que serán probablemente las que aparezcan por defecto:</p>
+<p><img alt="Captura%20de%20pantalla%20de%202020-04-23%2009-59-00.png" src="attachment:Captura%20de%20pantalla%20de%202020-04-23%2009-59-00.png" /></p>
+<p>En PyTorch Build usaremos la version <em>Stable</em>, en el Package pondremos <em>Conda</em> para instalarlo con anaconda, y Language será <em>Python</em>. En cuanto al OS seleccionar Linux, Mac o Windows en función de vuestro sistema operativo y finalmente en CUDA pondremos <em>None</em>, a menos que tengáis una tarjeta gráfica de Nvidia (en ese caso es más complejo puesto que hay que instalar las librerías CUDA y CuDNN, así como los drivers de Nvidia).</p>
+<p>Copiar el texto que aparece al lado de “Run this Command” y pegar en la terminal o el “Anaconda Prompt” en windows, dar siguiente y ya estará instalado.</p>
+</div>
+<div class="section" id="verificar-la-instalacion">
+<h4><span class="section-number">1.2.3.3. </span>Verificar la instalación<a class="headerlink" href="#verificar-la-instalacion" title="Permalink to this headline">¶</a></h4>
+<p>Para verificar si se ha instalado, abrimos una terminal de python:</p>
+<ul class="simple">
+<li><p>Windows y MacOS: Abre Anaconda Navigator y lanza <code class="docutils literal notranslate"><span class="pre">qtconsole</span></code>.</p></li>
+<li><p>Linux: Abre la terminal y escribe <code class="docutils literal notranslate"><span class="pre">ipython</span></code>.</p></li>
+</ul>
+<p>Y en la consola de Python escribimos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si todo funciona correctamente, ya tenemos todos los requisitos necesarios para realizar la práctica.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="landing-page.html" title="previous page">Iniciación a las redes neuronales con pyTorch</a>
+    <a class='right-next' id="next-link" href="01_pytorch.html" title="next page"><span class="section-number">2. </span>Pytorch</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
