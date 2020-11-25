@@ -1,5 +1,5 @@
 # in _config.yml
-title: "Iniciación a pyTorch"
+title: "Iniciación a las redes neuronales con pyTorch"
 logo: images/logo.png
 execute:
   execute_notebooks: "off"
