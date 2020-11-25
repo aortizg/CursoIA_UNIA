@@ -1,0 +1,5 @@
+# In _toc.yml
+- file: landing-page
+- file: 00 Práctica Deep Learning - Introducción
+- file: 01 Práctica Deep Learning - Perceptrón Multicapa
+- file: 02 Práctica Deep Learning - Redes Convolucionales
