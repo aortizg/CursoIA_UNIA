@@ -2,12 +2,9 @@
 - file: landing-page
 
   numbered: true
-- part: Introducción
-  chapters:
-  - file: 00 Práctica Deep Learning - Introducción
-- part: Perceptrón Multicapa
-  chapters:
-  - file: 01 Práctica Deep Learning - Perceptrón Multicapa
-- part: Redes Convolucionales
-  chapters:
-  - file: 02 Práctica Deep Learning - Redes Convolucionales
+- file: 00 Práctica Deep Learning - Introducción
+  title: Introducción
+- file: 01 Práctica Deep Learning - Perceptrón Multicapa
+  title: Perceptrón Multicapa
+- file: 02 Práctica Deep Learning - Redes Convolucionales
+  title: Redes Convolucionales
