@@ -7,6 +7,6 @@
 - file: 01_pytorch
   title: PyTorch
 - file: 02_mlp
-  title: Perceptrón Multicapa
+  title: El Perceptrón Multicapa
 - file: 03_cnn
   title: Redes Convolucionales
