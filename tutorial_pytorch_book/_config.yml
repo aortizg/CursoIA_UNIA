@@ -1,5 +1,10 @@
 # in _config.yml
-title: "My book title"
+title: "Iniciación a pyTorch"
 logo: images/logo.png
 execute:
   execute_notebooks: "off"
+
+repository:
+  url: https://github.com/pakitochus/tutorial_pytorch
+html:
+  use_repository_button: true
